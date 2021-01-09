@@ -23,7 +23,11 @@ public class GetAlarmNotifyData extends RichSourceFunction<Map<String, String>> 
     private volatile boolean isRunning = true;
     private ParameterTool parameterTool;
 
-
+    /**
+     *
+     * @param parameters
+     * @throws Exception
+     */
     @Override
     public void open(Configuration parameters) throws Exception {
         super.open(parameters);
