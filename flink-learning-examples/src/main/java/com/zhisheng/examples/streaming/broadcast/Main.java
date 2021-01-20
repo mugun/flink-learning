@@ -35,7 +35,9 @@ public class Main {
 
         //test for get data from MySQL
 //        alarmDataStream.print();
-
+        /**
+         * 广播流的拼接方式为事件流拼广播流
+         */
         DataStreamSource<MetricEvent> metricEventDataStream = KafkaConfigUtil.buildSource(env);
         SingleOutputStreamOperator<MetricEvent> alert = metricEventDataStream.connect(alarmDataStream.broadcast(ALARM_RULES))
                 .process(new MyBroadcastProcessFunction(ALARM_RULES));

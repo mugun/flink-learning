@@ -35,7 +35,7 @@ public class BroadcastAlertRule {
         /**
          * env的connect方法：是属于broadcast的连接方式
          * 主要包含两种两种连接方式 union和connect
-         * 其中union类似于mysql的union all,可以将两个同格式的数据集进行拼接且不去重，但是条件为数据格式要一直。
+         * 其中union类似于mysql的union all,可以将两个同格式的数据集进行拼接且不去重，但是条件为数据格式要一致。
          *
          * connect则可以不限制数据格式，但是只能进行两个数据流的连接。
          *

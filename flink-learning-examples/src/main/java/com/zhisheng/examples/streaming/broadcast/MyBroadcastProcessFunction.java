@@ -16,7 +16,14 @@ import java.util.Map;
  * 微信公众号：zhisheng
  */
 public class MyBroadcastProcessFunction extends BroadcastProcessFunction<MetricEvent, Map<String, String>, MetricEvent> {
-
+    /**
+     * 需要广播的逻辑应该在这个方法中实现
+     * 需要实现2个方法
+     * @processElement
+     * 用于处理业务流的数据
+     * @processBroadcastElement
+     * 用于处理广播流的数据
+     */
     private MapStateDescriptor<String, String> alarmRulesMapStateDescriptor;
 
     public MyBroadcastProcessFunction(MapStateDescriptor<String, String> alarmRulesMapStateDescriptor) {
