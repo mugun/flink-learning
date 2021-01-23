@@ -17,7 +17,7 @@ public class Main {
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
         //并行度设置为 1
         env.setParallelism(1);
-//        env.setParallelism(4);
+//      env.setParallelism(4);
 
         SingleOutputStreamOperator<Word> data = env.socketTextStream("localhost", 9001)
                 .map(new MapFunction<String, Word>() {

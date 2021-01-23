@@ -15,7 +15,12 @@ import static com.zhisheng.common.utils.DateUtil.YYYY_MM_DD_HH_MM_SS;
  */
 @Slf4j
 public class WordPeriodicWatermark implements AssignerWithPeriodicWatermarks<Word> {
-
+    /**
+     * 该类实现了周期性watermark的接口
+     * 需要实现两个方法 1:extractTimestamp 用于自定义timestamp的方法
+     * 2. getCurrentWatermark 获得当前watermark的逻辑
+     * 
+     */
     private long currentTimestamp = Long.MIN_VALUE;
 
     @Override
