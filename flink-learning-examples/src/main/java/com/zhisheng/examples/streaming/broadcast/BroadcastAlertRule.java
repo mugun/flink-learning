@@ -33,6 +33,7 @@ public class BroadcastAlertRule {
         StreamExecutionEnvironment env = ExecutionEnvUtil.prepare(parameterTool);
         List<String> strings = Arrays.asList("A", "B", "C");
         /**
+         * 在使用广播流时，需要使用MapStateDescriptor声明所进行广播的数据样式
          * env的connect方法：是属于broadcast的连接方式
          * 主要包含两种两种连接方式 union和connect
          * 其中union类似于mysql的union all,可以将两个同格式的数据集进行拼接且不去重，但是条件为数据格式要一致。
@@ -42,6 +43,10 @@ public class BroadcastAlertRule {
          *
          * 一般来说，union的方式更多的使用在数据的合流，connect的方式就适合在使用广播流的方式来广播数据配置
          *这个例子中使用的最简单的方式来进行数据广播，即仅使用广播流来广播固定数据。
+         *
+         * 在具体的BroadcastProcessFunction中，需要实现如下几个方法
+         * processElement：用于处理合并流的方法，由于是处理合并流的逻辑，因此广播流不允许改动
+         * processBroadcastElement: 用于处理广播流的内部内容，因此广播流可以变动
          */
         env.socketTextStream("127.0.0.1", 9200)
                 .connect(env.fromCollection(strings).broadcast(ALERT_RULE))
