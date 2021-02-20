@@ -14,6 +14,7 @@ import org.apache.flink.util.Collector;
  * Created by zhisheng on 2019/10/14 下午3:50
  * blog：http://www.54tianzhisheng.cn/
  * 微信公众号：zhisheng
+ *
  */
 public class KeyedProcessFunctionMain {
     public static void main(String[] args) throws Exception {
@@ -42,6 +43,15 @@ public class KeyedProcessFunctionMain {
                         out.collect(new Tuple2<>(ctx.getCurrentKey() + value.f0, value.f1 + 1));
                     }
 
+                    /**
+                     * 一般来说，如果两种processfunction如果需要用到timer（时间触发器），则需要先获取其的状态内容
+                     *状态内容则由StateDescriptor状态内容的获取，具体其对应着多种状态结构，如valueStateDescriptor，mapStateDescriptor等，具体可以查看更多源码。
+                     *具体描述可看https://www.jianshu.com/p/1e5534800f41
+                     * @param timestamp
+                     * @param ctx
+                     * @param out
+                     * @throws Exception
+                     */
                     @Override
                     public void onTimer(long timestamp, OnTimerContext ctx, Collector<Tuple2<String, Integer>> out) throws Exception {
                         System.out.println(ctx.getCurrentKey());

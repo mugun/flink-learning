@@ -20,7 +20,7 @@ import java.util.Map;
  */
 public class Main {
 
-    /
+
     final static MapStateDescriptor<String, String> ALARM_RULES = new MapStateDescriptor<>(
             "alarm_rules",
             BasicTypeInfo.STRING_TYPE_INFO,
