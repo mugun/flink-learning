@@ -18,9 +18,13 @@ import java.util.stream.Collectors;
  * 微信公众号：zhisheng
  */
 public class ClickhouseClusterSettings {
-    public static final String CLICKHOUSE_HOSTS = "clickhouse.access.hosts";
-    public static final String CLICKHOUSE_USER = "clickhouse.access.user";
-    public static final String CLICKHOUSE_PASSWORD = "clickhouse.access.password";
+//    public static final String CLICKHOUSE_HOSTS = "clickhouse.access.hosts";
+//    public static final String CLICKHOUSE_USER = "clickhouse.access.user";
+//    public static final String CLICKHOUSE_PASSWORD = "clickhouse.access.password";
+public static final String CLICKHOUSE_HOSTS = "192.168.0.104:8123";
+    public static final String CLICKHOUSE_USER = "";
+    public static final String CLICKHOUSE_PASSWORD = "";
+
 
     private final List<String> hostsWithPorts;
     private final String user;
